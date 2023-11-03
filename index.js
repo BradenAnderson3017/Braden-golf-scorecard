@@ -562,3 +562,14 @@ function updateTotal(tableBody) {
     });
   });
 }
+function endingGame() {
+  let endGameButton = document.getElementById("endGame");
+  endGameButton.addEventListener("click", () => {
+    localStorage.removeItem("players");
+    let playerVisuals = document.querySelectorAll(".playerName");
+    playerVisuals.forEach((player) => {
+      player.remove();
+    });
+  });
+}
+endingGame();
