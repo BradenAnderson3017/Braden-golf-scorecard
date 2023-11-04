@@ -585,11 +585,11 @@ function endingGame() {
     Command: toastr["success"](`${winnerName}, you are (L)PGA Tour material`);
 
     toastr.options = {
-      "closeButton": true,
+      "closeButton": false,
       "debug": false,
       "newestOnTop": false,
       "progressBar": true,
-      "positionClass": "toast-top-center",
+      "positionClass": "toast-top-right",
       "preventDuplicates": false,
       "onclick": null,
       "showDuration": "300",

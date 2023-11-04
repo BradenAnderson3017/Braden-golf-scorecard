@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link type="text/css" rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link type="text/css" rel="stylesheet" href="style.css"> <!-- Your custom CSS file -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <script defer type="text/javascript" src="index.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script defer type="text/javascript" src="index.js"></script>
 </head>
 <body>
     <div class="container">
@@ -33,10 +33,13 @@
                 <option value="" disabled selected>Select a Tee Type</option>
             </select>
         </div>
-        <div class="name-container">
-            <input type="text" id="nameInput" placeholder="Enter New Player...">
-            <input type="button" id="nameButton" value="Add New Player">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control form-control-sm" id="nameInput" placeholder="Enter New Player...">
         </div>
+        <div class="mb-3">
+            <button class="btn btn-primary btn-sm mr-2" type="button" id="nameButton">Add New Player</button>
+            <input type="button" value="End Game" class="btn btn-secondary btn-sm" id="endGame">
+        </div>           
         <div class="row" id="scorecard-container">
             <div class="col-lg-12" id="scorecard">
                 <div class="table-responsive">
@@ -170,7 +173,6 @@
                     </table>
                 </div>
             </div>
-            <input type="button" value="End Game" id="endGame">
         </div>
     </div>
 </body>
