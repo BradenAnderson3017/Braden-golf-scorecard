@@ -82,7 +82,7 @@ class Player {
     id = getNextId(),
     scores1 = Array(9).fill(null),
     scores2 = Array(9).fill(null),
-    total = [scores1 + scores2]
+    total = 0
   ) {
     this.name = name;
     this.id = id;
@@ -558,6 +558,8 @@ function updateTotal(tableBody) {
       if (nameCell.textContent === playerName) {
         let totalCell = nameRow.querySelector(".totalCell");
         totalCell.textContent = totalSum;
+        player.total = totalSum;
+        localStorage.setItem("players", JSON.stringify(players));
       }
     });
   });
@@ -565,11 +567,45 @@ function updateTotal(tableBody) {
 function endingGame() {
   let endGameButton = document.getElementById("endGame");
   endGameButton.addEventListener("click", () => {
-    localStorage.removeItem("players");
+    let players = JSON.parse(localStorage.getItem("players"));
+    
+    let numbers = [];
+    let winnerName;
+    
+    for (let winner in players) {
+      numbers.push(players[winner].total);
+      let smallestNumber = Math.min(...numbers);
+      if (smallestNumber === players[winner].total){
+        winnerName = players[winner].name;
+      }
+    }
+    
+    
+    
+    Command: toastr["success"](`${winnerName}, you are (L)PGA Tour material`);
+
+    toastr.options = {
+      "closeButton": true,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": true,
+      "positionClass": "toast-top-center",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
     let playerVisuals = document.querySelectorAll(".playerName");
     playerVisuals.forEach((player) => {
       player.remove();
     });
+    localStorage.removeItem("players");
   });
 }
 endingGame();
